@@ -1,7 +1,7 @@
 # ⬡ Percepta™ AML Intelligence Dashboard
 
 **Momentum Edge Consulting™**  
-Canadian Patent Application No. 3,297,419  
+Canadian Patent Application No. 3297419  
 [momentum-edge.ca](https://momentum-edge.ca)
 
 ---
@@ -61,7 +61,7 @@ App runs at `http://localhost:8501`
 
 Percepta™ was developed in response to increasing regulatory pressure on financial institutions to demonstrate explainable, auditable AML decision-making. The framework uses deterministic SQL logic to ensure that every alert — from initial trigger to final disposition — can be explained to a regulator in plain language within minutes.
 
-**Patent Application CA 3,297,419 · Momentum Edge Consulting™**
+**Patent Application CA 3297419 · Momentum Edge Consulting™**
 
 ---
 
@@ -75,4 +75,4 @@ This repository contains a **demonstration build with fully synthetic data**. No
 
 The production implementation — including proprietary rule engine logic, real-time data connectors, and institution-specific configurations — is confidential and not published here.
 
-**Patent Application CA 3,297,419 · All rights reserved · Momentum Edge Consulting™**
+**Patent Application CA 3297419 · All rights reserved · Momentum Edge Consulting™**
