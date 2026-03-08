@@ -685,7 +685,7 @@ if "📖" in page:
           <p style="font-size:17px; font-weight:700; color:{TEXT}; margin:0 0 12px 0;
                     line-height:1.5;">
             Percepta™ reduces AML false positives by <span style="color:{TEAL};">40%</span>
-            through deterministic SQL-based logic — delivering the sovereign-grade
+            through deterministic rule-based logic — delivering the sovereign-grade
             audit trail that regulators demand, while cutting annual compliance
             costs by an estimated <span style="color:{TEAL};">$880K</span>.
           </p>
@@ -699,13 +699,13 @@ if "📖" in page:
 
         support_items = [
             (TEAL,  "S1", "Deterministic rules reduce noise",
-             "8 SQL-defined rule types with explicit thresholds eliminate ambiguity. "
+             "8 deterministic rule types with explicit thresholds eliminate ambiguity. "
              "Each alert traces directly to a logic condition — reviewable by any analyst."),
             (BLUE,  "S2", "False positive rate drops from 91% → 54%",
              "Industry benchmark is 90–95% false positives. Percepta's weighted scoring "
              "and multi-rule confirmation cuts unnecessary reviews by 40%."),
             (PURPLE,"S3", "Full audit trail per decision",
-             "Every closed alert includes the SQL rule fired, threshold breached, "
+             "Every closed alert includes the rule fired, threshold breached, "
              "analyst action, and timestamp — satisfying FINTRAC Guideline 6G requirements."),
             (AMBER, "S4", "Multilingual name matching catches evasion",
              "Transliteration-aware engine resolves Arabic, Cyrillic, Chinese, and "
@@ -788,11 +788,11 @@ if "📖" in page:
             CRITICAL CONTEXT
           </div>
           <p style="font-size:13px; color:{TEXT}; line-height:1.7; margin:0;">
-            "Won't SQL rules become outdated as typologies evolve?"
+            "Won't rules become outdated as typologies evolve?"
           </p>
           <p style="font-size:13px; color:{MUTED}; line-height:1.7; margin:10px 0 0 0;">
             Percepta's rule engine is <strong style="color:{TEXT};">modular and versioned</strong>.
-            New typologies are added as parameterised SQL modules — with full
+            New typologies are added as parameterised rule modules — with full
             regression testing — without disrupting the existing audit trail.
             Rule updates are logged in the governance ledger for regulator review.
           </p>
@@ -803,7 +803,7 @@ if "📖" in page:
         st.markdown(f"""
         <div style="font-size:13px; color:{MUTED}; line-height:2.2;">
           📊 <strong style="color:{TEXT};">Command Centre</strong> — KPI overview &amp; trends<br>
-          🔍 <strong style="color:{TEXT};">Alert Explainability</strong> — Per-alert SQL drill-down<br>
+          🔍 <strong style="color:{TEXT};">Alert Explainability</strong> — Per-alert rule drill-down<br>
           🗂️ <strong style="color:{TEXT};">Typology Intelligence</strong> — Pattern heatmaps<br>
           🌐 <strong style="color:{TEXT};">Name Matching</strong> — Multilingual transparency<br>
           🤖 <strong style="color:{TEXT};">Percepta Assistant</strong> — AI-powered Q&amp;A<br>
@@ -974,7 +974,7 @@ elif "🔍" in page:
       <div class="masthead-tag">Percepta Core Capability</div>
       <h1>Alert Explainability Engine</h1>
       <div class="masthead-sub">
-        Every alert is traceable to a deterministic SQL rule — no black boxes,
+        Every alert is traceable to a deterministic rule — no black boxes,
         no ambiguity. Audit-ready by design.
       </div>
     </div>
@@ -1060,7 +1060,7 @@ elif "🔍" in page:
         </div>
         """, unsafe_allow_html=True)
 
-    # Rule details + SQL
+    # Rule details
     st.markdown(f"""
     <div class="section-header" style="margin-top:24px;">
       <h3>Triggered Rule: {rule_row['rule_name']}</h3>
@@ -1383,9 +1383,9 @@ elif "🤖" in page:
     - Average risk score: {avg_score:.1f}/100
     - Top typologies: {top_typ}
     - Analysts on team: 5
-    - Rules in engine: 8 deterministic SQL rules
+    - Rules in engine: 8 deterministic rules
     - Customers monitored: {len(customers)}
-    - Percepta differentiator: deterministic SQL logic with full audit trail,
+    - Percepta differentiator: deterministic rule logic with full audit trail,
       multilingual name matching (7 scripts), patent-pending
 
     Answer questions concisely, cite specific numbers where relevant, and
@@ -1467,7 +1467,7 @@ elif "🤖" in page:
             demo_answers = {
                 "false positive": f"Our current false positive rate is **{fp_r:.1%}**, compared to the industry benchmark of **91%**. Percepta's deterministic weighting has reduced unnecessary analyst reviews by ~40%, saving an estimated $880K annually in operational costs.",
                 "typology": f"The highest-risk typology is **{alerts.groupby('typology')['risk_score'].mean().idxmax()}** with an average risk score of {alerts.groupby('typology')['risk_score'].mean().max():.0f}/100. This typology also has one of the lower false positive rates, meaning when it fires — it's serious.",
-                "fintrac": "FINTRAC's Guideline 6G requires institutions to document *why* each STR decision was made. Percepta's SQL-based logic creates an immutable, human-readable audit trail for every alert — including the rule that fired, the threshold breached, and the analyst action. No black-box ML can provide this.",
+                "fintrac": "FINTRAC's Guideline 6G requires institutions to document *why* each STR decision was made. Percepta's rule engine creates an immutable, human-readable audit trail for every alert — including the rule that fired, the threshold breached, and the analyst action. No black-box ML can provide this.",
                 "default": f"Based on the current dataset of {total} alerts, our AML program shows a false positive rate of {fp_r:.1%}, with {sar_n} SARs filed. The top alert-generating typology is {list(top_typ.keys())[0]}. Percepta's deterministic rules allow any finding to be explained in plain language to regulators within minutes."
             }
             query_lower = user_input.lower()
