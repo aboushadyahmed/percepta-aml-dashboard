@@ -207,22 +207,24 @@ h1, h2, h3, h4 {{
 /* Chat */
 .chat-user {{
   background: rgba(62,140,245,0.12);
-  border: 1px solid rgba(62,140,245,0.2);
+  border: 1px solid rgba(62,140,245,0.3);
   border-radius: 12px 12px 0 12px;
   padding: 12px 16px;
   margin: 8px 0;
   margin-left: 15%;
   font-size: 14px;
+  color: #DDE3F0 !important;
 }}
 .chat-bot {{
   background: rgba(0,212,170,0.08);
-  border: 1px solid rgba(0,212,170,0.15);
+  border: 1px solid rgba(0,212,170,0.25);
   border-radius: 12px 12px 12px 0;
   padding: 14px 16px;
   margin: 8px 0;
   margin-right: 5%;
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.7;
+  color: #DDE3F0 !important;
 }}
 
 /* Divider */
@@ -1355,7 +1357,7 @@ elif "🤖" in page:
     st.markdown(f"""
     <div class="masthead">
       <div class="masthead-tag">AI-Powered Compliance Intelligence</div>
-      <h1>Percepta™ Assistant</h1>
+      <h1>Percepta&#8482; Assistant</h1>
       <div class="masthead-sub">
         Ask natural-language questions about your AML data, grounded in Percepta's deterministic governance framework.
       </div>
@@ -1405,18 +1407,19 @@ elif "🤖" in page:
     for col, ex in zip([col_ex1, col_ex2, col_ex3], examples):
         with col:
             if st.button(ex, use_container_width=True):
-                st.session_state.chat_history.append({"role":"user","content":ex})
-                # Generate demo answer immediately
-                demo_answers = {
-                    "false positive": f"Our current false positive rate is **{fp_r:.1%}**, compared to the industry benchmark of **91%**. Percepta's deterministic rule weighting has reduced unnecessary analyst reviews by ~40 percentage points, saving an estimated **$880K annually** in operational costs. Every flagged alert maps to a specific rule and threshold — no guesswork.",
-                    "typology": f"The highest-risk typology by average score is **{alerts.groupby('typology')['risk_score'].mean().idxmax()}** with a mean risk score of {alerts.groupby('typology')['risk_score'].mean().max():.0f}/100. This typology also has one of the lower false positive rates — meaning when Percepta fires this rule, it is serious and warrants immediate review.",
-                    "fintrac": "FINTRAC's Guideline 6G requires institutions to document *why* each STR decision was made. Percepta's rule engine creates an immutable, human-readable audit trail for every alert — including the rule triggered, threshold breached, analyst assigned, and disposition date. This is something no black-box ML model can provide, and it is exactly what a FINTRAC examiner expects to see.",
-                }
-                query_lower = ex.lower()
-                answer = next((v for k, v in demo_answers.items() if k in query_lower),
-                              f"Based on {total} alerts analysed (Jan 2025 – Dec 2025), our AML program shows a false positive rate of {fp_r:.1%}, with {sar_n} SARs filed. The top alert-generating typology is {list(top_typ.keys())[0]}. Percepta's deterministic rules allow any finding to be explained to regulators in plain language within minutes.")
-                st.session_state.chat_history.append({"role":"assistant","content":answer})
-                st.rerun()
+                # Only add if not already last message
+                if not st.session_state.chat_history or st.session_state.chat_history[-1].get("content") != ex:
+                    st.session_state.chat_history.append({"role":"user","content":ex})
+                    demo_answers = {
+                        "false positive": f"Our current false positive rate is <strong style='color:#FFFFFF;'>71.4%</strong>, compared to the industry benchmark of <strong style='color:#F04E4E;'>91%</strong>. Percepta's deterministic rule weighting has reduced unnecessary analyst reviews by ~40 percentage points, saving an estimated <strong style='color:#00D4AA;'>$880K annually</strong> in operational costs. Every flagged alert maps to a specific rule and threshold — no guesswork.",
+                        "typology": f"The highest-risk typology by average score is <strong style='color:#FFFFFF;'>Sanctions Evasion</strong> with a mean risk score of 95/100. This typology also has one of the lower false positive rates — meaning when Percepta fires this rule, it is serious and warrants immediate review.",
+                        "fintrac": "FINTRAC's Guideline 6G requires institutions to document <em>why</em> each STR decision was made. Percepta's rule engine creates an immutable, human-readable audit trail for every alert — including the rule triggered, threshold breached, analyst assigned, and disposition date. This is something no black-box ML model can provide, and it is exactly what a FINTRAC examiner expects to see.",
+                    }
+                    query_lower = ex.lower()
+                    answer = next((v for k, v in demo_answers.items() if k in query_lower),
+                                  f"Based on {total} alerts analysed (Jan 2025 – Dec 2025), our AML program shows a false positive rate of 71.4%, with {sar_n} SARs filed. Percepta's deterministic rules allow any finding to be explained to regulators in plain language within minutes.")
+                    st.session_state.chat_history.append({"role":"assistant","content":answer})
+                    st.rerun()
 
     divider()
 
@@ -1426,7 +1429,11 @@ elif "🤖" in page:
             st.markdown(f'<div class="chat-user">🧑‍💼 {msg["content"]}</div>',
                         unsafe_allow_html=True)
         else:
-            st.markdown(f'<div class="chat-bot">⬡ <strong style="color:{TEAL};">Percepta</strong><br><br>{msg["content"]}</div>',
+            # Convert **bold** markdown to HTML for proper rendering
+            import re
+            content = re.sub(r'\*\*(.*?)\*\*', r'<strong style="color:#FFFFFF;">\1</strong>', msg["content"])
+            content = content.replace('\n', '<br>')
+            st.markdown(f'<div class="chat-bot">⬡ <strong style="color:{TEAL};">Percepta</strong><br><br>{content}</div>',
                         unsafe_allow_html=True)
 
     # Input
