@@ -164,6 +164,7 @@ h1, h2, h3, h4 {{
   margin: 0;
   font-size: 18px;
   font-weight: 700;
+  color: #DDE3F0 !important;
 }}
 .section-header p {{
   margin: 4px 0 0 0;
@@ -269,6 +270,7 @@ h1, h2, h3, h4 {{
   font-size: 32px;
   font-weight: 800;
   margin: 0 0 8px 0;
+  color: #FFFFFF !important;
 }}
 .masthead-sub {{
   font-size: 15px;
