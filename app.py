@@ -1130,7 +1130,7 @@ elif "🗂️" in page:
         z=heat_data.values,
         x=heat_data.columns,
         y=heat_data.index,
-        colorscale=[[0,"#060A12"],[0.4, CARD2],[0.7, TEAL2],[1.0, TEAL]],
+        colorscale=[[0,"#0D2B22"],[0.25,"#0A4A3A"],[0.6, TEAL2],[1.0, TEAL]],
         hovertemplate="<b>%{y}</b><br>%{x}<br><b>%{z} alerts</b><extra></extra>",
         showscale=True,
         colorbar=dict(tickfont=dict(color=MUTED), outlinewidth=0)

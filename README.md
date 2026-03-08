@@ -66,3 +66,13 @@ Percepta™ was developed in response to increasing regulatory pressure on finan
 ---
 
 *© 2025 Momentum Edge Consulting. Percepta™ is a trademark of Momentum Edge Consulting.*
+
+---
+
+## Confidentiality Notice
+
+This repository contains a **demonstration build with fully synthetic data**. No real customer records, transaction data, or confidential information is included.
+
+The production implementation — including proprietary rule engine logic, real-time data connectors, and institution-specific configurations — is confidential and not published here.
+
+**Patent Application CA 3,297,419 · All rights reserved · Momentum Edge Consulting™**
