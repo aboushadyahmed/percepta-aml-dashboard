@@ -44,7 +44,7 @@ App runs at `http://localhost:8501`
 - **False Positive Reduction** — 54% vs. 91% industry benchmark (40pp improvement)
 - **Full Audit Trail** — Every decision logged with rule, threshold, analyst, and timestamp
 - **Multilingual Name Matching** — Arabic, Cyrillic, Chinese, Japanese, Korean, Devanagari
-- **AI-Powered Q&A** — Natural language queries against AML data via Claude (Anthropic)
+- **AI-Powered Q&A** — Natural language queries against AML data powered by large language model integration
 
 ---
 
@@ -52,7 +52,7 @@ App runs at `http://localhost:8501`
 
 - **Frontend:** Streamlit
 - **Visualisations:** Plotly
-- **AI Assistant:** Anthropic Claude API
+- **AI Assistant:** Large Language Model API
 - **Data:** Synthetic AML dataset (reproducible, seed-controlled)
 
 ---
