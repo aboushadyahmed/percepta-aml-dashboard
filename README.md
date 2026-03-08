@@ -23,7 +23,7 @@ This Streamlit dashboard demonstrates the platform's core capabilities across si
 | 🔍 Alert Explainability | Per-alert rule drill-down and risk score decomposition |
 | 🗂️ Typology Intelligence | Heatmaps, funnels, and typology risk profiles |
 | 🌐 Name Matching | Multilingual sanctions screening with confidence scores |
-| 🤖 Percepta Assistant | AI-powered compliance Q&A (requires Anthropic API key) |
+| 🤖 Percepta Assistant | AI-powered compliance Q&A — natural language queries against AML data |
 
 ---
 
