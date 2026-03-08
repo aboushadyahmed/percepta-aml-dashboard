@@ -607,10 +607,10 @@ with st.sidebar:
     divider()
 
     # API key for assistant
-    st.markdown(f'<div style="font-size:11px; color:{MUTED}; margin-bottom:6px;">🔑 Anthropic API Key (for Assistant)</div>',
+    st.markdown(f'<div style="font-size:11px; color:{MUTED}; margin-bottom:6px;">🔑 AI Assistant API Key</div>',
                 unsafe_allow_html=True)
     api_key = st.text_input("API Key", type="password", label_visibility="collapsed",
-                            placeholder="sk-ant-...")
+                            placeholder="sk-...")
     if api_key:
         st.markdown(f'<div style="font-size:11px; color:{GREEN};">✓ Key set</div>',
                     unsafe_allow_html=True)
@@ -1422,7 +1422,7 @@ elif "🤖" in page:
             query_lower = user_input.lower()
             answer = next((v for k, v in demo_answers.items() if k in query_lower),
                           demo_answers["default"])
-            answer += "\n\n*Note: Enter your Anthropic API key in the sidebar for live AI responses.*"
+            answer += "\n\n*Note: Enter your API key in the sidebar to enable live AI responses.*"
 
         st.session_state.chat_history.append({"role":"assistant","content":answer})
         st.rerun()
@@ -1435,7 +1435,7 @@ elif "🤖" in page:
     divider()
     st.markdown(f"""
     <div style="font-size:11px; color:{MUTED}; text-align:center; line-height:1.9;">
-      Percepta™ Assistant is powered by Claude (Anthropic) ·
+      Percepta™ Assistant · AI-powered compliance Q&A ·
       All responses are grounded in your institution's AML data ·
       Momentum Edge Consulting · Patent App. CA 3,297,419
     </div>
