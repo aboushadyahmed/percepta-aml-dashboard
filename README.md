@@ -8,7 +8,7 @@ Canadian Patent Application No. 3297419
 
 ## Overview
 
-Percepta™ is a sovereign-grade, explainable AML governance platform that transforms compliance from a cost centre into a regulatory advantage. Built on deterministic SQL-based logic, every alert decision is fully traceable, human-readable, and regulator-ready by design.
+Percepta™ is a sovereign-grade, explainable AML governance platform that transforms compliance from a cost centre into a regulatory advantage. Built on deterministic rule-based logic, every alert decision is fully traceable, human-readable, and regulator-ready by design.
 
 This Streamlit dashboard demonstrates the platform's core capabilities across six interactive sections.
 
@@ -20,7 +20,7 @@ This Streamlit dashboard demonstrates the platform's core capabilities across si
 |------|-------------|
 | 📖 Data Story | Pyramid-principle narrative — problem → big idea → evidence |
 | 📊 Command Centre | Executive KPIs, trend analysis, analyst workload |
-| 🔍 Alert Explainability | Per-alert SQL drill-down and risk score decomposition |
+| 🔍 Alert Explainability | Per-alert rule drill-down and risk score decomposition |
 | 🗂️ Typology Intelligence | Heatmaps, funnels, and typology risk profiles |
 | 🌐 Name Matching | Multilingual sanctions screening with confidence scores |
 | 🤖 Percepta Assistant | AI-powered compliance Q&A (requires Anthropic API key) |
@@ -40,7 +40,7 @@ App runs at `http://localhost:8501`
 
 ## Key Capabilities
 
-- **Deterministic SQL Rules** — 8 fully auditable rule types with explicit thresholds
+- **Deterministic Rule Engine** — 8 fully auditable rule types with explicit thresholds
 - **False Positive Reduction** — 54% vs. 91% industry benchmark (40pp improvement)
 - **Full Audit Trail** — Every decision logged with rule, threshold, analyst, and timestamp
 - **Multilingual Name Matching** — Arabic, Cyrillic, Chinese, Japanese, Korean, Devanagari
@@ -59,7 +59,7 @@ App runs at `http://localhost:8501`
 
 ## About Percepta™
 
-Percepta™ was developed in response to increasing regulatory pressure on financial institutions to demonstrate explainable, auditable AML decision-making. The framework uses deterministic SQL logic to ensure that every alert — from initial trigger to final disposition — can be explained to a regulator in plain language within minutes.
+Percepta™ was developed in response to increasing regulatory pressure on financial institutions to demonstrate explainable, auditable AML decision-making. The framework uses deterministic proprietary logic to ensure that every alert — from initial trigger to final disposition — can be explained to a regulator in plain language within minutes.
 
 **Patent Application CA 3297419 · Momentum Edge Consulting™**
 
