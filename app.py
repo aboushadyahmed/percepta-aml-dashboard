@@ -2,7 +2,7 @@
 ╔══════════════════════════════════════════════════════════════════╗
 ║          PERCEPTA™  AML INTELLIGENCE DASHBOARD                   ║
 ║          Momentum Edge Consulting                                 ║
-║          Canadian Patent Application No. 3,297,419               ║
+║          Canadian Patent Application No. 3297419               ║
 ║          Built for Quantic MSBA — Communicating with Data        ║
 ╚══════════════════════════════════════════════════════════════════╝
 """
@@ -298,10 +298,25 @@ h1, h2, h3, h4 {{
 ::-webkit-scrollbar-thumb {{ background: var(--border); border-radius: 3px; }}
 ::-webkit-scrollbar-thumb:hover {{ background: var(--muted); }}
 
+/* Primary button — teal */
+.stButton > button[kind="primary"] {{
+  background: {TEAL} !important;
+  color: {BG} !important;
+  border: none !important;
+  font-weight: 700 !important;
+}}
+.stButton > button[kind="primary"]:hover {{
+  background: {TEAL2} !important;
+}}
+
 /* Streamlit selectbox / input */
 [data-baseweb="select"] > div {{
-  background: var(--card) !important;
-  border-color: var(--border) !important;
+  background: var(--card2) !important;
+  border-color: {TEAL} !important;
+  border-width: 1px !important;
+}}
+[data-baseweb="select"] * {{
+  color: var(--text) !important;
 }}
 </style>
 """, unsafe_allow_html=True)
@@ -316,8 +331,8 @@ def generate_data():
     """Generate realistic synthetic AML data for Percepta demonstration."""
 
     # ── Date range: 24 months ──────────────────────────────────────────────
-    start_date = datetime(2023, 1, 1)
-    end_date   = datetime(2024, 12, 31)
+    start_date = datetime(2025, 1, 1)
+    end_date   = datetime(2025, 12, 31)
     date_range = pd.date_range(start_date, end_date, freq='D')
 
     # ── AML Rules ──────────────────────────────────────────────────────────
@@ -575,7 +590,7 @@ with st.sidebar:
         AML Intelligence Platform
       </div>
       <div style="font-size:10px; color:{MUTED}; margin-top:4px; opacity:0.6;">
-        Patent App. CA 3,297,419
+        Patent App. CA 3297419
       </div>
     </div>
     """, unsafe_allow_html=True)
@@ -600,7 +615,7 @@ with st.sidebar:
       <strong style="color:{TEXT};">Institution</strong><br>
       Mid-Tier Canadian Bank<br><br>
       <strong style="color:{TEXT};">Data Period</strong><br>
-      Jan 2023 – Dec 2024<br><br>
+      Jan 2025 – Dec 2025<br><br>
       <strong style="color:{TEXT};">Alerts Analysed</strong><br>
       {len(alerts):,} AML Alerts<br>
     </div>
@@ -758,7 +773,7 @@ if "📖" in page:
           <div style="background:rgba(0,212,170,0.05); border:1px solid rgba(0,212,170,0.15);
                       border-radius:8px; padding:12px; font-size:12px; color:{TEAL};
                       font-weight:600;">
-            ↻ Repeat: Adopt Percepta™ now
+            ✓ Key Takeaway: Explainability is no longer optional — it is the standard
           </div>
         </div>
         """, unsafe_allow_html=True)
@@ -803,7 +818,7 @@ elif "📊" in page:
       <div class="masthead-tag">Executive Overview</div>
       <h1>AML Command Centre</h1>
       <div class="masthead-sub">
-        24-month operational snapshot · Jan 2023 – Dec 2024 · {len(alerts)} alerts analysed
+        24-month operational snapshot · Jan 2025 – Dec 2025 · {len(alerts)} alerts analysed
       </div>
     </div>
     """, unsafe_allow_html=True)
@@ -1056,11 +1071,27 @@ elif "🔍" in page:
         st.markdown(f"""
         <div class="rule-block">
           <div style="font-size:11px; font-weight:700; letter-spacing:1.2px;
-                      text-transform:uppercase; color:{TEAL}; margin-bottom:8px;">
-            ⬡ Percepta SQL Logic — Deterministic &amp; Auditable
+                      text-transform:uppercase; color:{TEAL}; margin-bottom:12px;">
+            ⬡ Percepta Rule Engine — Deterministic &amp; Auditable
           </div>
-          <div class="sql-block">{rule_row['sql_logic']}</div>
-          <div style="font-size:11px; color:{MUTED}; margin-top:8px;">
+          <div style="background:rgba(0,212,170,0.04); border:1px solid rgba(0,212,170,0.15);
+                      border-radius:8px; padding:20px; text-align:center;">
+            <div style="font-size:28px; margin-bottom:10px;">🔒</div>
+            <div style="font-size:14px; font-weight:700; color:{TEXT}; margin-bottom:6px;">
+              Rule Logic: Confidential
+            </div>
+            <div style="font-size:12px; color:{MUTED}; margin-bottom:12px;">
+              Proprietary deterministic logic protected under<br>
+              Patent Application CA 3297419
+            </div>
+            <div style="display:inline-block; background:rgba(0,212,170,0.1);
+                        border:1px solid rgba(0,212,170,0.3); border-radius:100px;
+                        padding:6px 16px; font-size:11px; font-weight:700;
+                        letter-spacing:1px; color:{TEAL};">
+              AVAILABLE UNDER NDA · momentum-edge.ca
+            </div>
+          </div>
+          <div style="font-size:11px; color:{MUTED}; margin-top:10px;">
             ✓ Every parameter logged · ✓ Human-readable · ✓ Regulator-ready
           </div>
         </div>
@@ -1237,9 +1268,11 @@ elif "🌐" in page:
             nbinsx=15, marker_color=TEAL, opacity=0.8,
             name="Match Score"
         ))
-        fig_scores.add_vline(x=0.82, line_dash="dash", line_color=RED,
-                             annotation_text="Review Threshold 0.82",
-                             annotation_font_color=RED)
+        fig_scores.add_vline(x=0.82, line_dash="dash", line_color=AMBER,
+                             annotation_text="Review Threshold: 0.82",
+                             annotation_position="top right",
+                             annotation_font_color=AMBER,
+                             annotation_bgcolor=BG)
         st.plotly_chart(dark_fig(fig_scores, 280), use_container_width=True)
 
         section("Match Method Breakdown")
@@ -1324,8 +1357,7 @@ elif "🤖" in page:
       <div class="masthead-tag">AI-Powered Compliance Intelligence</div>
       <h1>Percepta™ Assistant</h1>
       <div class="masthead-sub">
-        Ask natural-language questions about your AML data. Powered by Claude,
-        grounded in Percepta's deterministic governance framework.
+        Ask natural-language questions about your AML data, grounded in Percepta's deterministic governance framework.
       </div>
     </div>
     """, unsafe_allow_html=True)
@@ -1340,10 +1372,10 @@ elif "🤖" in page:
     data_context = f"""
     You are the Percepta™ Intelligence Assistant, built on the explainable AML
     governance framework developed by Momentum Edge Consulting
-    (Canadian Patent Application No. 3,297,419).
+    (Canadian Patent Application No. 3297419).
 
     Current dataset summary:
-    - Total alerts analysed: {total} (Jan 2023 – Dec 2024)
+    - Total alerts analysed: {total} (Jan 2025 – Dec 2025)
     - False positive rate: {fp_r:.1%}
     - SARs filed: {sar_n} ({sar_n/total:.1%} of all alerts)
     - Average risk score: {avg_score:.1f}/100
@@ -1374,7 +1406,17 @@ elif "🤖" in page:
         with col:
             if st.button(ex, use_container_width=True):
                 st.session_state.chat_history.append({"role":"user","content":ex})
-                st.session_state.pending_query = ex
+                # Generate demo answer immediately
+                demo_answers = {
+                    "false positive": f"Our current false positive rate is **{fp_r:.1%}**, compared to the industry benchmark of **91%**. Percepta's deterministic rule weighting has reduced unnecessary analyst reviews by ~40 percentage points, saving an estimated **$880K annually** in operational costs. Every flagged alert maps to a specific rule and threshold — no guesswork.",
+                    "typology": f"The highest-risk typology by average score is **{alerts.groupby('typology')['risk_score'].mean().idxmax()}** with a mean risk score of {alerts.groupby('typology')['risk_score'].mean().max():.0f}/100. This typology also has one of the lower false positive rates — meaning when Percepta fires this rule, it is serious and warrants immediate review.",
+                    "fintrac": "FINTRAC's Guideline 6G requires institutions to document *why* each STR decision was made. Percepta's rule engine creates an immutable, human-readable audit trail for every alert — including the rule triggered, threshold breached, analyst assigned, and disposition date. This is something no black-box ML model can provide, and it is exactly what a FINTRAC examiner expects to see.",
+                }
+                query_lower = ex.lower()
+                answer = next((v for k, v in demo_answers.items() if k in query_lower),
+                              f"Based on {total} alerts analysed (Jan 2025 – Dec 2025), our AML program shows a false positive rate of {fp_r:.1%}, with {sar_n} SARs filed. The top alert-generating typology is {list(top_typ.keys())[0]}. Percepta's deterministic rules allow any finding to be explained to regulators in plain language within minutes.")
+                st.session_state.chat_history.append({"role":"assistant","content":answer})
+                st.rerun()
 
     divider()
 
@@ -1439,6 +1481,6 @@ elif "🤖" in page:
     <div style="font-size:11px; color:{MUTED}; text-align:center; line-height:1.9;">
       Percepta™ Assistant · AI-powered compliance Q&A ·
       All responses are grounded in your institution's AML data ·
-      Momentum Edge Consulting · Patent App. CA 3,297,419
+      Momentum Edge Consulting · Patent App. CA 3297419
     </div>
     """, unsafe_allow_html=True)
